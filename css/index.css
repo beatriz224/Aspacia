@@ -1,6 +1,156 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: rgb(226, 224, 185);
+
+
+}
+
+header {
+    height: auto;
+    width: auto;
+    background-color: rgb(241, 241, 221);
+    display: grid-templante-rows;
+
+}
+
+.pi {
+    display: flex;
+    color: rgb(63, 189, 63);
+    font-size: x-large;
+    width: 7vh;
+    height: 10vh;
+
+}
+
+
+.conteiner.banner {
+    height: 40vh;
+    width: 100%;
+    background-color: rgb(63, 189, 63);
+    color: rgb(223, 227, 202);
+    font-size: 15vh;
+    text-align: center;
+    padding-top: 10vh;
+
+}
+
+.textbanner {
+    text-align: center;
+}
+
+.logo {
+    width: 10vh;
+    height: 10vh;
+}
+
+.conteinertudo {
+    display: flex;
+
+}
+
+.menu {
+    display: flex;
+    width: 500vh;
+    justify-content: space-between;
+    text-decoration: none;
+}
+
+.abas {
+    display: flex;
+    padding: 1vh;
+    margin-right: 2vh;
+    margin-top: 3vh;
+    text-decoration: none;
+    list-style: none;
+}
+
+.item1 {
+    padding: 1vh;
+
+}
+
+.item2 {
+    padding: 1vh;
+}
+
+.item3 {
+    padding: 1vh;
+}
+
+.item4 {
+    padding: 1vh;
+}
+
+.item5 {
+    padding: 1vh;
+}
+.lo{
+    text-decoration: none;
+    color: rgb(63, 189, 63);
+}
+
+main {
+    background-color: rgb(246, 246, 209);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+
+}
+ 
+ 
+
+.conteiner-text {
+    font-size: xx-large;
+    color: rgb(97, 140, 79);
+    padding-left: 35vh;
+}
+
+.it6 {
+    width: 40vh;
+    height: 25vh;
+    background-color: rgb(212, 212, 235);
+    border-radius: 3vh;
+    color: rgb(97, 140, 79);
+    padding: 15vh;
+    padding-left: 5vh;
+  
+
+}
+
+.conteiner-main {
+    width: 100%;
+    
+    display: flex;
+ 
+  
+}
+
+
+.lo {
+    text-decoration: none;
+    color: rgb(97, 140, 79);
+}
+
+
+
+footer {
+    color: rgb(223, 227, 202);
+    background-color: rgb(63, 189, 63);
+    width: 100%;
+    height: 30vh;
+    display: flex;
+}
+
+h3 {
+    font-size: xx-large;
+}
+
+.contatos {
+    columns: 3;
+}
+
+.con {
+    list-style: none;
+
 }

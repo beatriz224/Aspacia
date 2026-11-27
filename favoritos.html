@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áspacia - Favoritos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Comforter&family=Lexend:wght@100..900&family=Modak&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/favoritos.css">
+    <link rel="stylesheet" href="teste.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/supabase-integracao.css">
+</head>
+
+<body>
+    <header>
+        <section class="conteinertudo">
+            <div class="menu">
+                <div class="pi">
+                    <img class="logo" src="img/logo_site.png">
+                    <h2 class="pitu">Favoritos</h2>
+                </div>
+
+                <ul class="abas">
+                    <li class="item1"><a class="lo" href="index.html">Lar</a></li>
+                    <li class="item1"><a class="lo" href="biografias/biografias.html">Biografias</a></li>
+                    <li class="item1"><a class="lo" href="paraconhecer.html">Artistas para conhecer</a></li>
+                    <li class="item1"><a class="lo" href="criacao.html">Criações</a></li>
+                    <li class="item1"><a class="lo" href="sobrenos.html">Sobre nós</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <article class="text">
+            <p class="fav">Favoritos de Para conhecer</p>
+        </article>
+
+        <!-- Lista dinâmica das obras favoritadas pelo usuário -->
+        <div id="lista-favoritos-obras" class="grid-obras-dinamicas">
+            <p>Entre com seu Gmail para ver suas obras favoritas.</p>
+        </div>
+
+        <article>
+            <p class="fav">Favoritos de biografias</p>
+        </article>
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide slide"></div>
+                <div class="swiper-slide slide"></div>
+                <div class="swiper-slide slide"></div>
+                <div class="swiper-slide slide"></div>
+                <div class="swiper-slide slide"></div>
+                <div class="swiper-slide slide"></div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </main>
+
+    <footer>
+        <section>
+            <h3>Contatos</h3>
+            <div class="contatos">
+                <ul class="con">
+                    <li><img class="img1" src="img/icons8-email-64.png">xxxxxx</li>
+                    <li><img class="img2" src="img/icons8-github-64.png">xxxxx</li>
+                    <li><img class="img3" src="img/icons8-instagram-logo-64.png">xxxx</li>
+                    <li><img class="img4" src="img/icons8-whatsapp-64.png">xxxxx</li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="teste.js"></script>
+    <script type="module">
+        import { inicializarBarraUsuario, buscarMeusFavoritos } from './js/aspacia-db.js';
+
+        const perfil = await inicializarBarraUsuario();
+        const container = document.getElementById('lista-favoritos-obras');
+
+        if (perfil) {
+            const favoritos = await buscarMeusFavoritos(perfil.id);
+            if (favoritos.length === 0) {
+                container.innerHTML = '<p>Você ainda não favoritou nenhuma obra.</p>';
+            } else {
+                container.innerHTML = favoritos.map(item => {
+                    const obra = item.obras;
+                    return `
+                        <article class="card-texto-aspacia">
+                            <small>${obra.categoria} • Por <strong>${obra.profiles?.full_name || 'Artista'}</strong></small>
+                            <h3>${obra.titulo}</h3>
+                            ${obra.sinopse ? `<p><em>${obra.sinopse}</em></p>` : ''}
+                            <div class="card-texto-corpo">${obra.conteudo}</div>
+                        </article>
+                    `;
+                }).join('');
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áspacia - Nova Criação</title>
+    <link rel="stylesheet" href="css/obra.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/supabase-integracao.css">
+</head>
+
+<body>
+    <header>
+        <article class="banner">
+            <h1 class="lo">Adicione sua nova criação</h1>
+            <p><a href="criacao.html" style="color: inherit;">← Voltar para Criações</a></p>
+        </article>
+    </header>
+
+    <main>
+        <div id="aviso-permissao" class="form-obra-container" style="display: none; text-align: center;">
+            <h3>Acesso restrito a Artistas</h3>
+            <p>Volte para a <a href="index.html">Página Inicial</a>, entre com seu Gmail e ative o <strong>Modo Artista</strong> para publicar textos.</p>
+        </div>
+
+        <form id="form-criar-obra" class="form-obra-container" style="display: none;">
+            <h3>Adicione uma categoria geral</h3>
+            <div class="tipo" style="margin-bottom: 1.2rem;">
+                <label class="categoria"><input type="radio" name="m" value="Texto / Literatura" checked> Texto / Literatura</label><br>
+                <label class="categoria"><input type="radio" name="m" value="Audiovisual"> Audiovisual</label><br>
+                <label class="categoria"><input type="radio" name="m" value="Áudio"> Áudio</label><br>
+                <label class="categoria"><input type="radio" name="m" value="Visual"> Visual</label>
+            </div>
+
+            <div class="campo-obra">
+                <label for="titulo-obra">Título da Obra</label>
+                <input type="text" id="titulo-obra" required placeholder="Digite o título do seu texto...">
+            </div>
+
+            <div class="campo-obra">
+                <label for="sinopse-obra">Sinopse ou Descrição Curta</label>
+                <input type="text" id="sinopse-obra" placeholder="Um breve resumo da obra...">
+            </div>
+
+            <div class="campo-obra">
+                <label for="conteudo-obra">Escreva seu Texto</label>
+                <textarea id="conteudo-obra" required placeholder="Escreva ou cole aqui o conteúdo completo da sua obra..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-publicar-obra">Salvar e Publicar no Acervo</button>
+        </form>
+    </main>
+
+    <script type="module">
+        import { getPerfilAtual, salvarObra } from './js/aspacia-db.js';
+
+        const perfil = await getPerfilAtual();
+        const form = document.getElementById('form-criar-obra');
+        const aviso = document.getElementById('aviso-permissao');
+
+        if (perfil && perfil.role === 'artista') {
+            form.style.display = 'block';
+        } else {
+            aviso.style.display = 'block';
+        }
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const categoriaSelecionada = document.querySelector('input[name="m"]:checked').value;
+
+            try {
+                await salvarObra({
+                    authorId: perfil.id,
+                    titulo: document.getElementById('titulo-obra').value,
+                    categoria: categoriaSelecionada,
+                    sinopse: document.getElementById('sinopse-obra').value,
+                    conteudo: document.getElementById('conteudo-obra').value
+                });
+                alert('Texto salvo com sucesso no banco de dados!');
+                window.location.href = 'criacao.html';
+            } catch (err) {
+                alert('Erro ao salvar obra: ' + err.message);
+            }
+        });
+    </script>
+</body>
+
+</html>

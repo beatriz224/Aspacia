@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Áspacia - Para Conhecer</title>
+    <link rel="stylesheet" href="css/paraconhecer.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Comforter&family=Lexend:wght@100..900&family=Modak&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/supabase-integracao.css">
+</head>
+
+<body>
+    <header>
+        <section class="conteinertudo">
+            <div class="menu">
+                <div class="pi">
+                    <img class="logo" src="img/logo_site.png">
+                    <h2 class="pitu">Para conhecer</h2>
+                </div>
+
+                <ul class="abas">
+                    <li class="item1"><a class="lo" href="index.html">Lar</a></li>
+                    <li class="item1"><a class="lo" href="biografias/biografias.html">Biografias</a></li>
+                    <li class="item1"><a class="lo" href="criacao.html">Criações</a></li>
+                    <li class="item1"><a class="lo" href="favoritos.html">Favoritos</a></li>
+                    <li class="item1"><a class="lo" href="sobrenos.html">Sobre nós</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <section class="conteiner-main">
+            <div id="acervo-geral" class="grid-obras-dinamicas">
+                <p>Carregando obras dos artistas...</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section>
+            <h3>Contatos</h3>
+            <div class="contatos">
+                <ul class="con">
+                    <li><img class="img1" src="img/icons8-email-64.png">xxxxxx</li>
+                    <li><img class="img2" src="img/icons8-github-64.png">xxxxx</li>
+                    <li><img class="img3" src="img/icons8-instagram-logo-64.png">xxxx</li>
+                    <li><img class="img4" src="img/icons8-whatsapp-64.png">xxxxx</li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+
+    <script type="module">
+        import { inicializarBarraUsuario, buscarTodasObras, favoritarObra } from './js/aspacia-db.js';
+
+        const perfil = await inicializarBarraUsuario();
+        const obras = await buscarTodasObras();
+        const grid = document.getElementById('acervo-geral');
+
+        if (obras.length === 0) {
+            grid.innerHTML = '<p>Nenhuma obra publicada ainda.</p>';
+        } else {
+            grid.innerHTML = obras.map(obra => `
+                <article class="card-texto-aspacia">
+                    <div>
+                        <small>${obra.categoria} • Por <strong>${obra.profiles?.full_name || 'Artista'}</strong></small>
+                        <h3>${obra.titulo}</h3>
+                        ${obra.sinopse ? `<p><em>${obra.sinopse}</em></p>` : ''}
+                        <div class="card-texto-corpo">${obra.conteudo}</div>
+                    </div>
+                    ${perfil ? `<button class="btn-publicar-obra btn-fav" data-id="${obra.id}" style="padding: 0.5rem 1rem; font-size: 0.85rem;">★ Favoritar</button>` : ''}
+                </article>
+            `).join('');
+
+            document.querySelectorAll('.btn-fav').forEach(btn => {
+                btn.addEventListener('click', () => favoritarObra(perfil.id, btn.dataset.id));
+            });
+        }
+    </script>
+</body>
+
+</html>

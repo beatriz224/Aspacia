@@ -1,12 +1,145 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Áspacia</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caacupe+One&family=Comforter&family=Lexend:wght@100..900&family=Modak&display=swap" rel="stylesheet">
+
+
 </head>
+
 <body>
-    
+    <header>
+        <section class="conteinertudo">
+            <div class="menu">
+                <div class="pi">
+                    <img class="logo" src="img/logo_site.png" alt="Logotipo da Áspacia">
+                    <h2 class="pitu">Áspacia</h2>
+                </div>
+
+                <ul class="abas">
+                    <li class="item1"><a class="lo" href="biografias/biografias.html">Biografias</a></li>
+                    <li class="item1"><a class="lo" href="paraconhecer.html">Artistas para conhecer</a></li>
+                    <li class="item1"><a class="lo" href="criacao.html">Criações</a></li>
+                    <li class="item1"><a class="lo" href="favoritos.html">Favoritos</a></li>
+                    <li class="item1"><a class="lo" href="sobrenos.html">Sobre nós</a></li>
+                    <li class="item1"><a class="lo" href="index.html" aria-current="page">Início</a></li>
+                </ul>
+            </div>
+        </section>
+
+        <article class="conteiner banner">
+            <p id="textbanner">Bem vindo a Alexandria</p>
+
+            <!-- Local dedicado de Login e Painel Rápido na Página Inicial -->
+            <div id="home-login-box">
+                <a id="btn-home-login" class="btn-aspacia-google" href="loginEcadastro/cadastro.html">
+                    Entrar ou cadastrar
+                </a>
+            </div>
+        </article>
+    </header>
+
+    <main>
+        <!-- Esteira 1 -->
+        <div class="swiper esteira1">
+            <h2 class="lo">Biografias recentes</h2>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir primeira playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir segunda playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir terceira playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir quarta playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir quinta playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+                <div class="swiper-slide">
+                    <a href="https://open.spotify.com/playlist/27gN69ebwiJRtXEboL12Ih?si=b8ec37368a8740be" target="_blank" rel="noopener noreferrer" aria-label="Ouvir sexta playlist no Spotify">
+                        <div class="slide"></div>
+                    </a>
+                </div>
+            </div>
+            <div class="swiper-pagination pag1"></div>
+            <div class="swiper-button-prev bp1"></div>
+            <div class="swiper-button-next bn1"></div>
+        </div>
+
+        <!-- Esteira 2 -->
+        <article class="titulo-da-esteira-2">
+            <h2 class="lo">Novos artistas</h2>
+        </article>
+        <div class="swiper esteira2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+            <div class="swiper-pagination pag2"></div>
+            <div class="swiper-button-prev bp2"></div>
+            <div class="swiper-button-next bn2"></div>
+        </div>
+
+        <!-- Esteira 3 -->
+        <article class="titulo-da-esteira-3">
+            <h2 class="lo">Criações em destaque</h2>
+        </article>
+        <div class="swiper esteira3">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+                <div class="swiper-slide"></div>
+            </div>
+            <div class="swiper-pagination pag3"></div>
+            <div class="swiper-button-prev bp3"></div>
+            <div class="swiper-button-next bn3"></div>
+        </div>
+    </main>
+
+    <footer>
+        <section>
+            <h3>Contatos</h3>
+            <div class="contatos">
+                <ul class="con">
+                    <li><img class="img1" src="img/icons8-email-64.png" alt=""> contato@aspacia.com</li>
+                    <li><img class="img2" src="img/icons8-github-64.png" alt=""> GitHub da Aspacia</li>
+                    <li><img class="img3" src="img/icons8-instagram-logo-64.png" alt=""> @aspacia</li>
+                    <li><img class="img4" src="img/icons8-whatsapp-64.png" alt=""> WhatsApp da Aspacia</li>
+                </ul>
+            </div>
+        </section>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.js"></script>
+    <script src="js/index.js"></script>
 </body>
+
 </html>
